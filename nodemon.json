@@ -3,7 +3,7 @@
   "watch": ["src/**/*"],
   "env": {
     "NODE_ENV": "development",
-    "DEBUG": "*,-express:router:*,-express:application,-morgan,-sequelize:connection:*"
+    "DEBUG": "*,-express:router:*,-express:application,-morgan,-sequelize:connection:*,-babel,-babel:*"
   },
   "exec": "npm run start",
   "ext": "js,json"

@@ -1,17 +1,17 @@
-const cookieParser = require('cookie-parser');
-const express = require('express');
-const logger = require('morgan');
+import cookieParser from 'cookie-parser';
+import express, { json, urlencoded } from 'express';
+import logger from 'morgan';
 
-const indexRouter = require('./routes/index.router');
+import indexRouter from './routes/index.router';
 
 const app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Route declarations
 app.use('/', indexRouter);
 
-module.exports = app;
+export default app;
