@@ -4,8 +4,10 @@
   "description": "Sandbox Express",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon",
-    "start": "node src/server/www"
+    "babel-node": "babel-node",
+    "dev": "nodemon --exec npm run babel-node ./src/server/www",
+    "start": "node dist/server/www",
+    "build": "rm -rf dist/ && mkdir dist && babel src -d dist"
   },
   "keywords": [],
   "author": "Blas Medina <r.blas.m.c@gmail.com>",
@@ -16,6 +18,10 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.14.1",
     "nodemon": "^2.0.7"
   }
 }

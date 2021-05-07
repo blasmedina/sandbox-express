@@ -1,8 +1,7 @@
-const IndexController = {
-  getIndex: (req, res) =>
-    res.json({
+export class IndexController {
+  static getIndex(_req, res) {
+    return res.json({
       msg: 'Hello World!!',
-    }),
-};
-
-module.exports = Object.freeze(IndexController);
+    });
+  }
+}

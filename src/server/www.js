@@ -2,9 +2,9 @@
  * Module dependencies.
  */
 
-const app = require('../app');
+import app from '../app';
 const debug = require('debug')('sandbox-express:server');
-const http = require('http');
+import { createServer } from 'http';
 
 /**
  * Get port from environment and store in Express.
@@ -17,7 +17,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const server = createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
