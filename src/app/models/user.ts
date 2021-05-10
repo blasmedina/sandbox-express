@@ -1,7 +1,12 @@
 import { Optional, Model, DataTypes } from 'sequelize';
 import { sequelize } from '.';
+import Joi from 'joi';
 
-interface UserAttributes {
+export const userCreationScheme = Joi.object({
+  name: Joi.string().required(),
+});
+
+export interface UserAttributes {
   id: string;
   name: string;
 }
