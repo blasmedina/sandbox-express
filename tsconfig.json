@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "strict": true,
     "allowJs": true,
-    "removeComments": true,
-    "resolveJsonModule": true
-  }
+    "removeComments": true
+  },
+  "exclude": ["node_modules", "./config/**/*", "./dist/**/*"]
 }

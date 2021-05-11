@@ -1,5 +1,5 @@
 import { Op } from '../models';
-import User, { UserCreationAttributes } from '../models/user';
+import User, { UserCreationAttributes } from '../models/user.model';
 
 export default class UsersRepository {
   static async create(payload: UserCreationAttributes) {
@@ -10,7 +10,7 @@ export default class UsersRepository {
     return User.findAll();
   }
 
-  static async readAllWithPagination(limit: number = 10, offset: number = 0, filter: UserCreationAttributes) {
+  static async readAllWithPaginationAndFilter(limit: number, offset: number, filter: UserCreationAttributes) {
     const { name } = filter;
     const where = {
       name: {
