@@ -3,7 +3,8 @@
  */
 
 import app from './app';
-const debug = require('debug')('sandbox-express:server');
+import Debug from 'debug';
+const debug = Debug('sandbox-express:server');
 import { createServer } from 'http';
 
 /**
