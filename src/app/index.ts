@@ -3,12 +3,12 @@ import cookieParser from 'cookie-parser';
 import express, { json, urlencoded } from 'express';
 import logger from 'morgan';
 
-import firstMiddleware from './middlewares/first.middleware';
-import errorHandlerMiddleware from './middlewares/errorHandler.middleware';
-import logErrorsMiddleware from './middlewares/logErrors.middleware';
+import firstMiddleware from '../middlewares/first.middleware';
+import errorHandlerMiddleware from '../middlewares/errorHandler.middleware';
+import logErrorsMiddleware from '../middlewares/logErrors.middleware';
 
-import indexRouter from './routes/index.router';
-import userRouter from './routes/user.router';
+import indexRouter from '../routes/index.router';
+import userRouter from '../routes/user.router';
 
 const app = express();
 
