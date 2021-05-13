@@ -1,12 +1,12 @@
 # Sandbox Express
 
-Proyecto base de una API REST. Con el fin dejar plasmado los conocimientos adquiridos con el tiempo, una de las razones principales porque nace la iniciativa de crear y mantener este proyecto.
+Proyecto base de una **API REST** en `NodeJS`. Con el fin dejar plasmado los conocimientos adquiridos con el tiempo, y construir un proyecto que pueda ayudar en futuros desarrollos, son las razones principales por la que nace esta iniciativa.
 
 ## Características
 
 ### Estructura de carpetas
 
-```
+```text
 tree -d -A -C -I 'node_modules|db|dist'
 .
 ├── config            => Configuraciones de la aplicación
