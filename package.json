@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "nodemon",
     "build": "del-cli dist/ && mkdir dist && tsc",
-    "start": "node dist/server/www",
-    "start:dev": "ts-node ./src/server/www",
+    "start": "node ./dist",
+    "start:dev": "ts-node ./src",
     "db:init": "npm run db:delete && npm run db:populate",
-    "db:delete": "del-cli db/",
+    "db:delete": "del-cli ./db/",
     "db:populate": "npm run db:migrate && npm run db:seed",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
