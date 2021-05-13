@@ -10,7 +10,9 @@ Proyecto base de una API REST. Con el fin dejar plasmado los conocimientos adqui
 tree -d -A -C -I 'node_modules|db|dist'
 .
 ├── config            => Configuraciones de la aplicación
-└── src
+├── db                => Contenedor de base de datos
+├── dist              => Contenedor del build de la aplicación
+└── src               => Código fuente de la aplicación
     ├── app           => Punto de entrada de la aplicación
     ├── controllers   => Definiciones de la lógica de la aplicación
     ├── exceptions    => Contenedor de "Exception" utilizado por la aplicación
@@ -21,7 +23,6 @@ tree -d -A -C -I 'node_modules|db|dist'
     ├── repositories  => Repositorio de información
     ├── routes        => Definiciones de los recursos de la aplicación
     ├── seeders       => Sembradores de la base de datos para el ORM
-    ├── server        => Configuración del servidor
     └── services      => Servicios externos consumidos por la aplicación
 ```
 
@@ -39,5 +40,5 @@ tree -d -A -C -I 'node_modules|db|dist'
 #### Secundarias
 
 - Morgan (Middleware registrador de solicitudes HTTP para NodeJS)
-- Express-Http-Context (Middleware almacenador de contexto)
+- Express-Http-Context (Middleware que almacena contextos)
 - Http-Status-Codes (Librería de constantes que enumeran los códigos de estado HTTP, que ayuda a una programación más semántica)
