@@ -1,19 +1,8 @@
-import { Optional, Model, DataTypes } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '.';
-import Joi from 'joi';
+import { IUserAttributes, IUserCreationAttributes } from '../interfaces/user.interface';
 
-export const userCreationScheme = Joi.object({
-  name: Joi.string().required(),
-});
-
-export interface UserAttributes {
-  id: string;
-  name: string;
-}
-
-export type UserCreationAttributes = Optional<UserAttributes, 'id'>;
-
-class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+class User extends Model<IUserAttributes, IUserCreationAttributes> implements IUserAttributes {
   public id!: string;
   public name!: string;
 

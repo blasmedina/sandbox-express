@@ -42,3 +42,12 @@ tree -d -A -C -I 'node_modules|db|dist'
 - Morgan (Middleware registrador de solicitudes HTTP para NodeJS)
 - Express-Http-Context (Middleware que almacena contextos)
 - Http-Status-Codes (Librería de constantes que enumeran los códigos de estado HTTP, que ayuda a una programación más semántica)
+
+## Códigos de estado
+
+| Método | Códigos               |
+| ------ | --------------------- |
+| GET    | 200 - 400 - 404 - 500 |
+| POST   | 201 - 400 - 500       |
+| PUT    | 200 - 400 - 404 - 500 |
+| DELETE | 204 - 400 - 500       |

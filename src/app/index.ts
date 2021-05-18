@@ -4,8 +4,8 @@ import express, { json, urlencoded } from 'express';
 import logger from 'morgan';
 
 import firstMiddleware from '../middlewares/first.middleware';
-import errorHandlerMiddleware from '../middlewares/errorHandler.middleware';
-import logErrorsMiddleware from '../middlewares/logErrors.middleware';
+import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
+import logErrorsMiddleware from '../middlewares/log-errors.middleware';
 
 import indexRouter from '../routes/index.router';
 import userRouter from '../routes/user.router';
