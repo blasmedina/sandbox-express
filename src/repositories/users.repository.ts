@@ -1,8 +1,9 @@
 import { Op } from '../models';
-import User, { UserCreationAttributes } from '../models/user.model';
+import User from '../models/user.model';
+import { IUserCreationAttributes } from '../interfaces/user.interface';
 
 export default class UsersRepository {
-  static async create(payload: UserCreationAttributes) {
+  static async create(payload: IUserCreationAttributes) {
     return User.create(payload);
   }
 
@@ -10,7 +11,7 @@ export default class UsersRepository {
     return User.findAll();
   }
 
-  static async readAllWithPaginationAndFilter(limit: number, offset: number, filter: UserCreationAttributes) {
+  static async readAllWithPaginationAndFilter(limit: number, offset: number, filter: IUserCreationAttributes) {
     const { name } = filter;
     const where = {
       name: {
@@ -28,7 +29,7 @@ export default class UsersRepository {
     return User.findByPk(id);
   }
 
-  static async update(id: string, payload: UserCreationAttributes) {
+  static async update(id: string, payload: IUserCreationAttributes) {
     const data = await User.update(payload, { where: { id } });
     return Boolean(data[0]) ? this.readById(id) : null;
   }
