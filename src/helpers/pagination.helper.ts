@@ -4,9 +4,8 @@ export function getPagination(page: string, size: string) {
   return { limit, offset };
 }
 
-export function getPagingData(data: { rows: any[]; count: number }, page: string, limit: number) {
-  const { count: totalItems, rows } = data;
+export function getPagingData(rows: any[], count: number, page: string, limit: number) {
   const currentPage = +page;
-  const totalPages = Math.ceil(totalItems / limit);
-  return { totalItems, data: rows, totalPages, currentPage };
+  const totalPages = Math.ceil(count / limit);
+  return { totalItems: count, data: rows, totalPages, currentPage };
 }
