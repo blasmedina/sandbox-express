@@ -19,6 +19,7 @@
   "author": "Blas Medina <r.blas.m.c@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "config": "^3.3.6",
     "cookie-parser": "^1.4.5",
     "del-cli": "^3.0.1",
