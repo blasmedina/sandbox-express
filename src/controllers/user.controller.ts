@@ -1,3 +1,4 @@
+import Joi from 'joi';
 import UsersRepository from '../repositories/users.repository';
 import { BadRequestException } from '../exceptions/bad-request.exception';
 import { IUserCreationAttributes, UserCreationSchema } from '../interfaces/user.interface';
@@ -6,7 +7,7 @@ import { RecordNotFoundException } from '../exceptions/record-not-found.exceptio
 import { RecordNotUpdatedException } from '../exceptions/record-not-updated.exception';
 import { StatusCodes } from 'http-status-codes';
 import { getPagination, getPagingData } from '../helpers/pagination.helper';
-import { Joi, requestValidator } from '../helpers/request-validator.helper';
+import { requestValidator } from '../helpers/request-validator.helper';
 
 export class UserController {
   static async create(req: Request, res: Response, next: NextFunction) {

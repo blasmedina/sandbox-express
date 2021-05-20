@@ -1,7 +1,7 @@
 import Joi from 'joi';
+import PeopleRepository from '../repositories/people.repository';
 import { NextFunction, Request, Response } from 'express';
 import { PeopleCreationScheme } from '../interfaces/people.interface';
-import { PeopleService } from '../services/people.service';
 import { RecordNotFoundException } from '../exceptions/record-not-found.exception';
 import { RecordNotUpdatedException } from '../exceptions/record-not-updated.exception';
 import { requestValidator } from '../helpers/request-validator.helper';
@@ -15,7 +15,7 @@ export class PeopleController {
         },
         req,
       );
-      const row = await PeopleService.create(payload);
+      const row = await PeopleRepository.create(payload);
       return res.json({ data: row });
     } catch (error) {
       next(error);
@@ -24,7 +24,7 @@ export class PeopleController {
 
   static async readAll(req: Request, res: Response, next: NextFunction) {
     try {
-      const rows = await PeopleService.readAll();
+      const rows = await PeopleRepository.readAll();
       return res.json({ data: rows });
     } catch (error) {
       next(error);
@@ -34,7 +34,7 @@ export class PeopleController {
   static async readById(req: Request, res: Response, next: NextFunction) {
     try {
       const paramsSchema = Joi.object({
-        id: Joi.string().guid().required(),
+        id: Joi.string().required(),
       });
       const {
         params: { id },
@@ -44,7 +44,7 @@ export class PeopleController {
         },
         req,
       );
-      const row = await PeopleService.readById(id);
+      const row = await PeopleRepository.readById(id);
       if (row === null) throw new RecordNotFoundException(id);
       return res.json({ data: row });
     } catch (error) {
@@ -55,7 +55,7 @@ export class PeopleController {
   static async update(req: Request, res: Response, next: NextFunction) {
     try {
       const paramsSchema = Joi.object({
-        id: Joi.string().guid().required(),
+        id: Joi.string().required(),
       });
       const {
         body: payload,
@@ -68,7 +68,7 @@ export class PeopleController {
         req,
       );
 
-      const row = await PeopleService.update(id, payload);
+      const row = await PeopleRepository.update(id, payload);
       if (row === null) throw new RecordNotUpdatedException(id);
       return res.json({ data: row });
     } catch (error) {
@@ -79,7 +79,7 @@ export class PeopleController {
   static async delete(req: Request, res: Response, next: NextFunction) {
     try {
       const paramsSchema = Joi.object({
-        id: Joi.string().guid().required(),
+        id: Joi.string().required(),
       });
       const {
         params: { id },
@@ -89,7 +89,7 @@ export class PeopleController {
         },
         req,
       );
-      const row = await PeopleService.delete(id);
+      const row = await PeopleRepository.delete(id);
       return res.json({ data: row });
     } catch (error) {
       next(error);

@@ -8,7 +8,8 @@ import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import logErrorsMiddleware from '../middlewares/log-errors.middleware';
 
 import indexRouter from '../routes/index.router';
-import userRouter from '../routes/user.router';
+import usersRouter from '../routes/users.router';
+import peopleRouter from '../routes/people.router';
 
 const app = express();
 
@@ -22,7 +23,8 @@ app.use(firstMiddleware);
 
 // Route declarations
 app.use('/', indexRouter);
-app.use('/user', userRouter);
+app.use('/users', usersRouter);
+app.use('/people', peopleRouter);
 
 app.use(logErrorsMiddleware, errorHandlerMiddleware);
 

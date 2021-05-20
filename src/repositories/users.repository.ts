@@ -1,6 +1,6 @@
-import { Op } from '../models';
 import User from '../models/user.model';
 import { IUserCreationAttributes } from '../interfaces/user.interface';
+import { Op } from '../models';
 
 export default class UsersRepository {
   static async create(payload: IUserCreationAttributes) {

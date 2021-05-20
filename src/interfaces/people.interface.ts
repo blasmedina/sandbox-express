@@ -4,7 +4,7 @@ import Joi from 'joi';
 export const PeopleCreationScheme = Joi.object({
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
-  name: Joi.string().required(),
+  email: Joi.string().required(),
 });
 
 export interface IPeopleAttributes {
