@@ -9,5 +9,5 @@
     "allowJs": true,
     "removeComments": true
   },
-  "exclude": ["node_modules", "./config/**/*", "./dist/**/*"]
+  "exclude": ["./node_modules", "./dist", "./config", "./**/*.spec.ts", "./*.js"]
 }
