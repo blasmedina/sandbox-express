@@ -17,8 +17,6 @@ interface IResult {
   };
 }
 
-export { Joi };
-
 export async function requestValidator(requestSchemas: IRequestSchemas, req: Request) {
   const result: IResult = {
     body: undefined,

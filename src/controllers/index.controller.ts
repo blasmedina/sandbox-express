@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
 import httpContext from 'express-http-context';
+import { Request, Response } from 'express';
 
 export class IndexController {
   static getIndex(req: Request, res: Response) {
