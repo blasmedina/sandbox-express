@@ -1,5 +1,5 @@
-import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 import { HttpException } from './http.exception';
+import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 
 export class BadRequestException extends HttpException {
   constructor() {

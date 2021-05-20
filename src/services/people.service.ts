@@ -26,13 +26,13 @@ export class PeopleService {
   }
 
   static async update(id: string, payload: IPeopleCreationAttributes) {
-    const response = await mockApiPeopleInstance.put(`/${id}]`, payload);
+    const response = await mockApiPeopleInstance.put(`/${id}`, payload);
     const data = response.data;
     return data;
   }
 
   static async delete(id: string) {
-    const response = await mockApiPeopleInstance.delete(`/${id}]`);
+    const response = await mockApiPeopleInstance.delete(`/${id}`);
     const data = response.data;
     return data;
   }
