@@ -40,7 +40,6 @@ tree -d -A -C -I 'node_modules|db|dist'
 #### Secundarias
 
 - Morgan (Middleware registrador de solicitudes HTTP para NodeJS)
-- Express-Http-Context (Middleware que almacena contextos)
 - Http-Status-Codes (Librería de constantes que enumeran los códigos de estado HTTP, que ayuda a una programación más semántica)
 
 ## Códigos de estado
@@ -51,3 +50,45 @@ tree -d -A -C -I 'node_modules|db|dist'
 | POST   | 201 - 400 - 500       |
 | PUT    | 200 - 400 - 404 - 500 |
 | DELETE | 204 - 400 - 500       |
+
+## Comenzando
+
+### Pre-requisitos
+
+- Node: v10 para arriba
+
+### Instalación
+
+```bash
+npm install
+```
+
+```bash
+npm run build
+```
+
+```bash
+npm run start
+```
+
+Y para ejecutar en ambiente de desarrollo...
+
+```bash
+npm run dev
+```
+
+## Prueba
+
+```bash
+npm run test
+```
+
+### Verificación de codificación
+
+```bash
+npm run lint
+```
+
+## Construido con
+
+- [Express](https://expressjs.com/)
