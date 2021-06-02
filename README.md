@@ -92,3 +92,8 @@ npm run lint
 ## Construido con
 
 - [Express](https://expressjs.com/)
+
+## Swagger
+
+- https://swagger.io/docs/specification/about/
+- https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do
