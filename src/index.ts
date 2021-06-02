@@ -1,6 +1,8 @@
 /**
  * Module dependencies.
  */
+import dotenvFlow from 'dotenv-flow';
+dotenvFlow.config();
 
 import app from './app';
 import Debug from 'debug';
