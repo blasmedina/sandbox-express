@@ -6,25 +6,33 @@ Proyecto base de una **API REST** en `NodeJS`. Con el fin dejar plasmado los con
 
 ### Estructura de carpetas
 
-```text
+```bash
 tree -d -A -C -I 'node_modules|db|dist'
+```
+
+```text
 .
 ├── config            => Configuraciones de la aplicación
 ├── db                => Contenedor de base de datos
 ├── dist              => Contenedor del build de la aplicación
 └── src               => Código fuente de la aplicación
-    ├── app           => Punto de entrada de la aplicación
-    ├── controllers   => Definiciones de la lógica de la aplicación
-    ├── exceptions    => Contenedor de "Exception" utilizado por la aplicación
-    ├── helpers       => Contenedor de "Helper" utilizado por la aplicación
-    ├── middlewares   => Contenedor de "Middleware" utilizado por la aplicación
-    ├── migrations    => Migraciones de la base de datos para el ORM
-    ├── models        => Modelos de la base de datos
-    ├── repositories  => Repositorio de información
+    ├── app           => Configuración de la APP
+    ├── controllers   => Responsable de la lógica de la aplicación
+    ├── exceptions    => Contenedor de "Exception"
+    ├── helpers       => Contenedor de "Helper"
+    ├── middlewares   => Contenedor de "Middleware"
+    ├── migrations    => [ORM] Migraciones de la base de datos
+    ├── models        => [ORM] Modelos de la base de datos
+    ├── repositories  => Responsable de recuperar datos de fuentes externas como bases de datos, api, almacenamiento local, etc.
     ├── routes        => Definiciones de los recursos de la aplicación
-    ├── seeders       => Sembradores de la base de datos para el ORM
-    └── services      => Servicios externos consumidos por la aplicación
+    ├── seeders       => [ORM] Sembradores de la base de datos
+    └── services      => Responsable de la lógica de negocio y de proveer la información a los controladores
 ```
+
+1. Routes
+1. Controllers
+1. Services
+1. Repositories
 
 ### Dependencias
 
