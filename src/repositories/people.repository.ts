@@ -1,26 +1,39 @@
-import { IPeopleCreationAttributes } from '../interfaces/people.interface';
-import { PeopleService } from '../services/people.service';
+import { IPeopleAttributes, IPeopleCreationAttributes } from '../interfaces/people.interface';
+import axios from 'axios';
 
-export default class PeopleRepository {
+const mockApiPeopleInstance = axios.create({
+  baseURL: 'https://60a14031d2855b00173b1d8f.mockapi.io/api/v1/people',
+  timeout: 1000,
+});
+
+export class PeopleRepository {
   static async create(payload: IPeopleCreationAttributes) {
-    return PeopleService.create(payload);
+    const response = await mockApiPeopleInstance.post('/', payload);
+    const data = response.data;
+    return data;
   }
 
   static async readAll() {
-    return PeopleService.readAll();
+    const response = await mockApiPeopleInstance.get('/');
+    const data: IPeopleAttributes[] = response.data;
+    return data;
   }
 
   static async readById(id: string) {
-    return PeopleService.readById(id);
+    const response = await mockApiPeopleInstance.get(`/${id}`);
+    const data: IPeopleAttributes = response.data;
+    return data;
   }
 
   static async update(id: string, payload: IPeopleCreationAttributes) {
-    const data = await PeopleService.update(id, payload);
+    const response = await mockApiPeopleInstance.put(`/${id}`, payload);
+    const data = response.data;
     return Boolean(data) ? data : null;
   }
 
   static async delete(id: string) {
-    const data = await PeopleService.delete(id);
+    const response = await mockApiPeopleInstance.delete(`/${id}`);
+    const data = response.data;
     return Boolean(data);
   }
 }
