@@ -2,7 +2,7 @@ import User from '../models/user.model';
 import { IUserCreationAttributes } from '../interfaces/user.interface';
 import { Op } from '../models';
 
-export default class UsersRepository {
+export class UsersRepository {
   static async create(payload: IUserCreationAttributes) {
     return User.create(payload);
   }
@@ -12,7 +12,7 @@ export default class UsersRepository {
   }
 
   static async readAllWithPaginationAndFilter(limit: number, offset: number, filter: IUserCreationAttributes) {
-    const { name } = filter;
+    const { name = '' } = filter;
     const where = {
       name: {
         [Op.like]: `%${name}%`,

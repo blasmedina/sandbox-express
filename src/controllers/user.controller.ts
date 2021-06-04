@@ -1,11 +1,11 @@
 import Joi from 'joi';
-import UsersRepository from '../repositories/users.repository';
 import { BadRequestException } from '../exceptions/bad-request.exception';
 import { IUserCreationAttributes, UserCreationSchema } from '../interfaces/user.interface';
 import { NextFunction, Request, Response } from 'express';
 import { RecordNotFoundException } from '../exceptions/record-not-found.exception';
 import { RecordNotUpdatedException } from '../exceptions/record-not-updated.exception';
 import { StatusCodes } from 'http-status-codes';
+import { UsersService } from '../services/users.service';
 import { getPagination, getPagingData } from '../helpers/pagination.helper';
 import { requestValidator } from '../helpers/request-validator.helper';
 
@@ -18,7 +18,7 @@ export class UserController {
         },
         req,
       );
-      const row = await UsersRepository.create(payload);
+      const row = await UsersService.create(payload);
       return res.status(StatusCodes.CREATED).json({ data: row });
     } catch (error) {
       next(error);
@@ -27,7 +27,7 @@ export class UserController {
 
   static async readAll(req: Request, res: Response, next: NextFunction) {
     try {
-      const rows = await UsersRepository.readAll();
+      const rows = await UsersService.readAll();
       return res.json({ data: rows });
     } catch (error) {
       next(error);
@@ -37,13 +37,13 @@ export class UserController {
   static async readAllWithPagination(req: Request, res: Response, next: NextFunction) {
     try {
       const querySchema = Joi.object({
-        name: Joi.string(),
         page: Joi.string(),
         size: Joi.string(),
+        filter: Joi.string(),
       });
 
       const {
-        query: { name = '', page = '0', size = '10' },
+        query: { page = '0', size = '10', filter: filterString = '{}' },
       } = await requestValidator(
         {
           query: querySchema,
@@ -52,8 +52,8 @@ export class UserController {
       );
 
       const { limit, offset } = getPagination(page, size);
-      const filter: IUserCreationAttributes = { name };
-      const { rows, count } = await UsersRepository.readAllWithPaginationAndFilter(limit, offset, filter);
+      const filter: IUserCreationAttributes = JSON.parse(filterString);
+      const { rows, count } = await UsersService.readAllWithPaginationAndFilter(limit, offset, filter);
       const { totalItems, data, totalPages, currentPage } = getPagingData(rows, count, page, limit);
       return res.json({ totalItems, data, totalPages, currentPage });
     } catch (error) {
@@ -75,7 +75,7 @@ export class UserController {
         req,
       );
 
-      const row = await UsersRepository.readById(id);
+      const row = await UsersService.readById(id);
       if (row === null) throw new RecordNotFoundException(id);
       return res.json({ data: row });
     } catch (error) {
@@ -99,9 +99,9 @@ export class UserController {
         req,
       );
 
-      const row = await UsersRepository.readById(id);
+      const row = await UsersService.readById(id);
       if (row === null) throw new RecordNotFoundException(id);
-      const data = await UsersRepository.update(id, payload);
+      const data = await UsersService.update(id, payload);
       if (data === null) throw new RecordNotUpdatedException(id);
       return res.json({ data });
     } catch (error) {
@@ -123,9 +123,9 @@ export class UserController {
         req,
       );
 
-      const row = await UsersRepository.readById(id);
+      const row = await UsersService.readById(id);
       if (row === null) throw new BadRequestException();
-      await UsersRepository.delete(id);
+      await UsersService.delete(id);
       return res.status(StatusCodes.NO_CONTENT);
     } catch (error) {
       next(error);
