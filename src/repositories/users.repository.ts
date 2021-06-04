@@ -12,7 +12,7 @@ export default class UsersRepository {
   }
 
   static async readAllWithPaginationAndFilter(limit: number, offset: number, filter: IUserCreationAttributes) {
-    const { name } = filter;
+    const { name = '' } = filter;
     const where = {
       name: {
         [Op.like]: `%${name}%`,

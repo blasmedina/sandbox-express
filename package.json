@@ -15,7 +15,7 @@
     "db:seed": "npx sequelize-cli db:seed:all",
     "lint": "eslint 'src/**/*.{js,ts}' --quiet",
     "ts-jest": "ts-jest",
-    "test": "cross-env NODE_ENV=test jest --watchAll --testTimeout=10000"
+    "test": "cross-env NODE_ENV=test npm run db:init && jest --watchAll --testTimeout=10000"
   },
   "keywords": [],
   "author": "Blas Medina <r.blas.m.c@gmail.com>",

@@ -37,13 +37,13 @@ export class UserController {
   static async readAllWithPagination(req: Request, res: Response, next: NextFunction) {
     try {
       const querySchema = Joi.object({
-        name: Joi.string(),
         page: Joi.string(),
         size: Joi.string(),
+        filter: Joi.string(),
       });
 
       const {
-        query: { name = '', page = '0', size = '10' },
+        query: { page = '0', size = '10', filter: filterString = '{}' },
       } = await requestValidator(
         {
           query: querySchema,
@@ -52,7 +52,7 @@ export class UserController {
       );
 
       const { limit, offset } = getPagination(page, size);
-      const filter: IUserCreationAttributes = { name };
+      const filter: IUserCreationAttributes = JSON.parse(filterString);
       const { rows, count } = await UsersRepository.readAllWithPaginationAndFilter(limit, offset, filter);
       const { totalItems, data, totalPages, currentPage } = getPagingData(rows, count, page, limit);
       return res.json({ totalItems, data, totalPages, currentPage });

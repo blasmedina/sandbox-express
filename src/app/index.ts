@@ -12,11 +12,13 @@ import peopleRouter from '../routes/people.router';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 
-const swaggerOptions = {
+const swaggerOptions: swaggerJsDoc.Options = {
   swaggerDefinition: {
+    openapi: '3.0.0',
     info: {
-      title: 'Sandbox Express',
-      version: '1.0.0',
+      title: process.env.npm_package_name || 'title',
+      description: process.env.npm_package_description || 'description',
+      version: process.env.npm_package_version || 'version',
     },
   },
   apis: ['./src/routes/*router.ts'],
@@ -43,7 +45,7 @@ app.get('/api-docs.json', (_req, res) => {
 });
 
 // Route declarations
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   res.json(startedAt);
 });
 app.use('/users', usersRouter);

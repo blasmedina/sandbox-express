@@ -13,16 +13,27 @@ const PeopleRouter = Router();
  * @swagger
  * /people/:
  *   post:
- *     summary: Create all person
+ *     summary: Create a person
  *     parameters:
- *        - name: named
- *          description: Name of the person
+ *        - name: firstName
+ *          description: First name of the person
  *          in: formData
  *          required: true
  *          type: string
- *          example: Leanne Graham
- *     tags:
- *      - People
+ *          example: John
+ *        - name: lastName
+ *          description: Last name of the person
+ *          in: formData
+ *          required: true
+ *          type: string
+ *          example: Connor
+ *        - name: email
+ *          description: Email of the person
+ *          in: formData
+ *          required: true
+ *          type: string
+ *          example: a@b.c
+ *     tags: [People]
  *     responses:
  *       200:
  *         description: Success
@@ -35,8 +46,7 @@ PeopleRouter.route('/').post(PeopleController.create);
  * /people/:
  *   get:
  *     summary: Get all people
- *     tags:
- *      - People
+ *     tags: [People]
  *     responses:
  *       200:
  *         description: Success
@@ -48,16 +58,14 @@ PeopleRouter.route('/').get(PeopleController.readAll);
  * @swagger
  * /people/{id}:
  *   get:
- *     summary: Get pèrson
- *     tags:
- *      - People
+ *     summary: Get a person
+ *     tags: [People]
  *     parameters:
  *       - name: id
  *         description: Numeric ID of the person to retrieve.
  *         in: path
  *         required: true
- *         schema:
- *           type: integer
+ *         type: integer
  *     responses:
  *       200:
  *         description: Success
@@ -69,16 +77,29 @@ PeopleRouter.route('/:id').get(PeopleController.readById);
  * @swagger
  * /people/{id}:
  *   put:
- *     summary: Update pèrson
- *     tags:
- *      - People
+ *     summary: Update a person
+ *     tags: [People]
  *     parameters:
  *       - name: id
  *         description: Numeric ID of the person to retrieve.
  *         in: path
  *         required: true
- *         schema:
- *           type: integer
+ *         type: integer
+ *       - name: firstName
+ *         description: First name of the person
+ *         in: formData
+ *         type: string
+ *         example: John
+ *       - name: lastName
+ *         description: Last name of the person
+ *         in: formData
+ *         type: string
+ *         example: Connor
+ *       - name: email
+ *         description: Email of the person
+ *         in: formData
+ *         type: string
+ *         example: a@b.c
  *     responses:
  *       200:
  *         description: Success
@@ -90,16 +111,14 @@ PeopleRouter.route('/:id').put(PeopleController.update);
  * @swagger
  * /people/{id}:
  *   delete:
- *     summary: Delete pèrson
- *     tags:
- *      - People
+ *     summary: Delete a person
+ *     tags: [People]
  *     parameters:
  *       - name: id
  *         description: Numeric ID of the person to retrieve.
  *         in: path
  *         required: true
- *         schema:
- *           type: integer
+ *         type: integer
  *     responses:
  *       200:
  *         description: Success
